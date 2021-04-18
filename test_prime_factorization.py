@@ -3,6 +3,5 @@ from prime_factorization import *
 
 
 class PrimeFactorizationTestCase(TestCase):
-    def test_returnsNoneIfNumLowerThan2(self):
-        factors = factorize(1)
-        self.assertEqual(None, factors)
+    def test_returnsPrimeIfNumIsPrime(self):
+        self.assertEqual('2', factorize(2))
