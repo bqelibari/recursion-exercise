@@ -2,27 +2,23 @@ from math import sqrt, floor
 
 
 def factorize(num: int) -> list[int]:
-    result, num = return_list_of_twos_and_new_num(num)
-    other_factors, rest = return_list_of_other_primefactors_and_rest(num)
-    result.extend(other_factors)
-    result.append(int(rest))
-    if result[-1] == 1:
-        return result[0:-1]
-    return result
+    prime_factors = return_list_of_primefactors_and_rest(num)
+    prime_factors = remove_last_item_if_num_fully_dividable_by_prime(prime_factors)
+    return prime_factors
 
 
-def return_list_of_twos_and_new_num(num):
+def remove_last_item_if_num_fully_dividable_by_prime(prime_factors: list[str]) -> list[str]:
+    if prime_factors[-1] == '1':
+        return prime_factors[0:-1]
+    return prime_factors
+
+
+def return_list_of_primefactors_and_rest(num: int):
     result = []
-    while num % 2 == 0:
-        result.append(2)
-        num = num / 2
-    return result, num
-
-
-def return_list_of_other_primefactors_and_rest(num: int):
-    result = []
-    for divisor in range(3, int(sqrt(num)) + 1):
+    for divisor in range(2, int(sqrt(num)) + 1):
         while num % divisor == 0:
-            result.append(divisor)
+            result.append(str(divisor))
             num = num / divisor
-    return result, num
+    rest_as_string = str(int(num))
+    result.append(rest_as_string)
+    return result
