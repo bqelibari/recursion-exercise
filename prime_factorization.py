@@ -1,7 +1,7 @@
 from math import sqrt, floor
 
 
-def factorize(num: int) -> list[int]:
+def prime_factorize(num: int) -> list[int]:
     prime_factors = return_list_of_primefactors_and_rest(num)
     prime_factors = remove_last_item_if_num_fully_dividable_by_prime(prime_factors)
     return prime_factors
