@@ -2,7 +2,7 @@ from math import sqrt, floor
 
 
 def prime_factorize(num: int) -> list[int]:
-    prime_factors = return_list_of_primefactors_and_rest(num)
+    prime_factors = return_list_of_primefactors(num)
     prime_factors = remove_last_item_if_num_fully_dividable_by_prime(prime_factors)
     return prime_factors
 
@@ -13,7 +13,7 @@ def remove_last_item_if_num_fully_dividable_by_prime(prime_factors: list[str]) -
     return prime_factors
 
 
-def return_list_of_primefactors_and_rest(num: int):
+def return_list_of_primefactors(num: int):
     result = []
     for divisor in range(2, int(sqrt(num)) + 1):
         while num % divisor == 0:
@@ -22,3 +22,5 @@ def return_list_of_primefactors_and_rest(num: int):
     rest_as_string = str(int(num))
     result.append(rest_as_string)
     return result
+
+print(prime_factorize(834672))
